@@ -1,13 +1,19 @@
 @echo off
 setlocal EnableExtensions
-chcp 65001 >nul
+set "LOG=%~dp0setup.log"
+if exist "%LOG%" del /q "%LOG%" >nul 2>&1
 echo ============================================================
 echo        YOLO Training Setup - Windows
 echo ============================================================
 echo.
+echo 📝 Log file: %LOG%
+echo.
+echo [START] %date% %time%> "%LOG%"
+chcp 65001 >nul
+>> "%LOG%" echo [INFO] Code page set to UTF-8
 
 REM Check if Python is installed
-python --version >nul 2>&1
+call :run python --version
 if errorlevel 1 (
     echo ❌ Python not found! Please install Python 3.8+ first.
     pause
@@ -15,7 +21,7 @@ if errorlevel 1 (
 )
 
 echo ✅ Python found!
-python --version
+call :run python --version
 echo.
 
 REM Create virtual environment
@@ -121,12 +127,17 @@ pause
 exit /b 0
 
 :run
-%*
-exit /b %errorlevel%
+echo.>> "%LOG%"
+echo [RUN] %*>> "%LOG%"
+%*>> "%LOG%" 2>&1
+set "ERR=%errorlevel%"
+echo [EXIT] %ERR%>> "%LOG%"
+exit /b %ERR%
 
 :fail
 echo.
 echo ❌ Setup failed. Please review the error above.
+echo 📝 Log saved at: %LOG%
 echo.
 pause
 exit /b 1
