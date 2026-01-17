@@ -8,7 +8,7 @@ import os
 ROBOFLOW_API_KEY = "xWmGZqldGGdVHAeTBz8b"
 WORKSPACE_NAME = "thaidetec"
 PROJECT_NAME = "vehicle-detection-yg4le"
-VERSION_NUMBER = 12
+VERSION_NUMBER = 13
 DATASET_FORMAT = "yolov11"
 
 def download_dataset(force_download: bool = False) -> str | None:
@@ -26,6 +26,7 @@ def download_dataset(force_download: bool = False) -> str | None:
     except ImportError:
         print("❌ ไม่พบ roboflow package")
         print("   กรุณารัน: pip install roboflow")
+        print("   ถ้าใช้ Colab: !pip install roboflow")
         return None
     
     # Check if dataset already exists
