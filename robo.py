@@ -46,9 +46,9 @@ def download_dataset(force_download: bool = False) -> str | None:
     print(f"   Workspace: {WORKSPACE_NAME}")
     print(f"   Project: {PROJECT_NAME}")
     print(f"   Version: {VERSION_NUMBER}")
-        print(f"   Format: {DATASET_FORMAT}")
-        if DOWNLOAD_LOCATION:
-            print(f"   Location: {os.path.abspath(DOWNLOAD_LOCATION)}")
+    print(f"   Format: {DATASET_FORMAT}")
+    if DOWNLOAD_LOCATION:
+        print(f"   Location: {os.path.abspath(DOWNLOAD_LOCATION)}")
     print()
     
     try:
