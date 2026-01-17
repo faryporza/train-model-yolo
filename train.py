@@ -10,7 +10,7 @@ from pathlib import Path
 # =============================================================================
 
 # Model Configuration
-MODEL_NAME = "yolo11n.pt"  # Options: yolo11n.pt, yolo11s.pt, yolo11m.pt, yolo11l.pt, yolo11x.pt
+MODEL_NAME = "yolo11l.pt"  # Options: yolo11n.pt, yolo11s.pt, yolo11m.pt, yolo11l.pt, yolo11x.pt
 
 # Training Hyperparameters
 EPOCHS = 100              # จำนวน Epochs
